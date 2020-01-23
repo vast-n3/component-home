@@ -1,5 +1,5 @@
 {
-    "name": "vast-n3/component-home",
+    "name": "vast-n3/home",
     "description": "Start page ",
     "minimum-stability": "dev",
     "require": {
