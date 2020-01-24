@@ -3,20 +3,16 @@
     "description": "Start page ",
     "minimum-stability": "dev",
     "require": {
-        "mnsami/composer-custom-directory-installer": "1.1.*",
-        "vast-n3/vastn3": "dev-master"
+        "mnsami/composer-custom-directory-installer": "1.1.*"
     },
     "license": "MIT",
     "repositories":[
-        {
-            "type":"vcs",
-            "url":"https://github.com/vast-n3/vastn3.git"
-        }
+       
     ],
     "extra": {
         "installer-paths": {
             "./frame/{$name}": [
-                "vast-n3/vastn3"
+               
             ],
             "./model/{$name}": [],
             "./component/{$name}": []
