@@ -1,1 +1,95 @@
-<h1>{{name}}</h1>
+<section class="flex">
+    <div class="container mx-auto md:w-2/3 py-4">
+        <h1 class="text-primary text-3xl">Welcome to vast-n3</h1>
+        <p class="my-2">
+            You can jump right into development! vast-n3 is as non-invasive as it gets and can be deployed "as is".
+            <br>
+            May we suggest to familiarize yourself with the following:
+        </p>
+        <div class="flex p-2 justify-between">
+            <a class="text-secondary" href="#tailwind">Tailwind</a>
+            <a class="text-secondary" href="#neoan3">neoan3</a>
+            <a class="text-secondary" href="#axios">axios</a>
+        </div>
+        <h2 id="tailwind" class="text-primary text-2xl mt-4">It's basically tailwind</h2>
+        <div class="border-t border-secondary  py-4">
+
+            <p class="my-2">
+                The utility-first css framework <a class="text-secondary" href="https://tailwindcss.com" target="_blank">tailwind</a>
+                gives you total control over your styles. vast-n3 uses postCSS and relevant files can be found in "frame/vastn3/css".
+            </p>
+            <h3 class="text-secondary text-xl">Theming</h3>
+            <p class="my-2">
+                vast-n3 adds the prefixes "primary", "secondary", "success", "warning" and "danger" to tailwind.
+                You can change these values in "frame/vastn3/css/theme.css"
+            </p>
+            <h3 class="text-secondary text-xl">Building</h3>
+            <p class="my-2">
+                Since vast-n3 uses postCSS as a preprocessor, please refrain from using the tailwind commands. Instead, run
+                <code class="bg-gray-800 text-white px-2">npm build</code>
+            </p>
+        </div>
+        <h2 id="neoan3" class="text-primary text-2xl mt-6">neoan3</h2>
+        <div class="border-t border-secondary  py-4">
+
+            <p class="my-2">
+                The PHP multi purpose framework <a class="text-secondary" href="https://neoan.us/neoan3docs/" target="_blank">neoan3</a>
+                provides a flexible basis for your API & CRUD needs.
+            </p>
+            <h3 class="text-secondary text-xl">Setup</h3>
+            <p class="my-2">
+                We have taken care of most of it for you, but you will probably verify your database credentials now:
+                <br>
+                <code class="bg-gray-800 text-white px-2">neoan3 credentials</code> <br>
+                Please make changes to "vastn3_db" accordingly. Then, run <br>
+                <code class="bg-gray-800 text-white px-2">neoan3 migrate models up</code> <br><br>
+                <span class="text-warning">NOTE:</span> The first time you run this command, the tool will ask you for your credentials again.
+                As you can host & run multiple credentials, the cli tool saves its own credentials for operations.
+            </p>
+
+            <h3 class="text-secondary text-xl">Your first component</h3>
+            <p class="my-2">
+                We created templates in "_template" optimized for vast-n3. Let's build our first component.
+            </p>
+            <code class="bg-gray-800 text-white px-2">neoan3 new component myComponent</code>
+            <p class="my-2">
+                Choose "Custom Element". The cli tool has not created files in the folder "component/myComponent".
+                In order to make this component available on a route, add it to the $vueComponents-array. <br><br>
+                <span class="text-warning">NOTE:</span> Routing endpoints are defined in "component/[name]/[name].ctrl.php"'s init-function.
+                You can change the default route (default_ctrl) in the file "default.php".
+            </p>
+            <p class="my-2">
+                You can now open the used template file (usually "component/[name]/[name].view.html") and use your component:
+                <br>
+                <code class="bg-gray-800 text-white px-2">&lt;my-component>&lt;/my-component></code>
+            </p>
+        </div>
+        <h2 id="axios" class="text-primary text-2xl mt-6">axios & the api</h2>
+        <div class="border-t border-secondary  py-4">
+            <p>
+                We have wrapped <a href="https://github.com/axios/axios" target="_blank" class="text-secondary">axios</a> in a globally available variable "api". No don't need to import or define anything else.
+                In your component, the code <code class="bg-gray-800 text-white px-2">api.get('home')</code>
+                will target the function "getHome" located in "component/home/Home.ctrl.php"
+            </p>
+            <h3 class="text-secondary text-xl">Example</h3>
+            <p class="py-2 italic">component/myComponent/myComponent.ce.js</p>
+            <pre class="text-white bg-gray-900 p-1">
+mounted(){
+    api.get('home?test=works').then(res => {
+        console.table(res.data)
+    })
+}
+            </pre>
+            <p class="py-2 italic">component/home/Home.ctrl.php</p>
+            <pre class="text-white bg-gray-900 p-1">
+function getHome($parameters = [])
+{
+    return [
+        'msg' => 'API response',
+        'sent_params' => $parameters
+    ];
+}
+            </pre>
+        </div>
+    </div>
+</section>
